@@ -1,0 +1,24 @@
+{% extends 'teachertemplate/teacherbase.html' %}
+{% block content%}
+{% load crispy_forms_tags %}
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">NO</th>
+        <th scope="col">DATE</th>
+        <th scope="col">DESCRIPTION</th>
+
+         </tr>
+   </thead>
+<tbody>
+{% for i in view %}
+<tr>
+        <td> {{forloop.counter}}</td>
+        <td> {{i.date }} </td>
+        <td> {{i.description}} </td>
+
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

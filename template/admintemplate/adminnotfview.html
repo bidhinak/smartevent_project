@@ -1,0 +1,30 @@
+{% extends 'admintemplate/Adminbase.html' %}
+{% block content%}
+{% load crispy_forms_tags %}
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">NO</th>
+        <th scope="col">DATE</th>
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">UPDATE</th>
+        <th scope="col">DELETE</th>
+         </tr>
+   </thead>
+<tbody>
+{% for i in show %}
+<tr>
+        <td> {{forloop.counter}}</td>
+        <td> {{i.date }} </td>
+        <td> {{i.description}} </td>
+        <td><a href="{% url 'notificationupdate' i.id %}" class="btn btn-outline-dark">Update</a></td>
+        <td>
+            <form action="{% url 'notificationdelete' i.id %}" method="POST" >
+            {% csrf_token %}<button type="submit" class="btn btn-secondary">Delete</button>
+            </form>
+         </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

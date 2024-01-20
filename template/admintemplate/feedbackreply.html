@@ -1,0 +1,29 @@
+{% extends 'admintemplate/Adminbase.html' %}
+{% block content%}
+{% load crispy_forms_filters %}
+<div class="col-lg-8">
+
+
+
+        <div class="card">
+            <h1 style="font-display:italic;">Reply to feedback</h1>
+
+
+
+
+                <label >username:</label>
+                  <input type="text"   name="user" readonly value="{{reply.user}}" ><br>
+                <label >feedback:</label>
+                  <input type="text"  name="feedback" readonly value="{{reply.feedback}}" ><br>
+                <label >reply:</label>
+                  <input type="text"  name="reply" value="{{reply.reply}}" >
+                <br>
+                <div>
+                     <button type="submit" class="btn btn-dark btn-block" >submit</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

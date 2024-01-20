@@ -1,0 +1,10 @@
+{% extends 'admintemplate/Adminbase.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+{{data|crispy}}
+{% csrf_token %}
+<h1>admin</h1>
+{% endblock %}

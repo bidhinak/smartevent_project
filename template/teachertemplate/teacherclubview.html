@@ -1,0 +1,73 @@
+{% extends 'teachertemplate/teacherbase.html' %}
+{% block content %}
+
+<!--<table class="table">-->
+<!--    <thead class="table table-striped">-->
+<!--    <tr>-->
+<!--        <th scope="col">NO</th>-->
+<!--        <th scope="col">CLUB NAME</th>-->
+<!--        <th scope="col">STAFF INCHARGE</th>-->
+<!--        <th scope="col">CLUB LOGO</th>-->
+
+
+
+
+
+<!--    </tr>-->
+<!--    </thead>-->
+<!--   <tbody>-->
+
+
+<!--&lt;!&ndash;        <div class="card">&ndash;&gt;-->
+<!--&lt;!&ndash;    <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;         <td>{{forloop.counter}}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;         <td>{{ i.club_name}} </td>&ndash;&gt;-->
+<!--&lt;!&ndash;         <td>{{i.staff_incharge}}  </td>&ndash;&gt;-->
+<!--&lt;!&ndash;         <td><img src="{{i.club_logo.url}}" width="80" height="100"/> </td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;     </div>&ndash;&gt;-->
+<!--        <tr>-->
+<!--    <td>-->
+<!--    <div class="card text-white bg-secondary mb-3" style=" width:90px;height:90px">-->
+<!--        <br><center>{{forloop.counter}}</center>-->
+<!--    </div>-->
+<!--        </td>-->
+<!--     <td>-->
+<!--     <div class="card" style=" width:90px;height:90px">-->
+<!--      <br><center> {{ i.club_name}}</center>-->
+<!--    </div>-->
+<!--    </td>-->
+<!--    <td>-->
+<!--    <div class="card" style=" width:90px;height:90px">-->
+<!--      <br><center>  {{i.staff_incharge}}</center>-->
+<!--    </div>-->
+<!--        </td>-->
+<!--     <td>-->
+<!--    <div class="card" style=" width:90px;height:90px">-->
+<!--        <img src="{{i.club_logo.url}}" width="90" height="90"/>-->
+<!--    </div>-->
+<!--        </td>-->
+<!--</tr>-->
+
+<!--    </tbody>-->
+  <div class="row">
+      {% for i in view %}
+  <div class="col-sm-3">
+    <div class="card">
+    <img src="{{ i.club_logo.url }}" style="width:248px;height:160px;">
+      <div class="card-body">
+            <p class="card-text">{{ forloop.counter }}</p>
+            <h4 class="card-title">{{ i.club_name }}</h4>
+            <h6 class="card-title">{{ i.staff_incharge }}</h6>
+        <a href="{% url 'tchreventdetails' i.id  %}" class="btn btn-primary">Events</a>
+
+      </div>
+    </div>
+  </div>
+      {% endfor %}
+  </div>
+
+
+{% endblock %}
+

@@ -1,0 +1,11 @@
+{% extends 'teachertemplate/teacherbase.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+ <form method="POST" action="#">
+
+     {{view|crispy}}
+     {% csrf_token %}
+     <br><input type="submit" class="btn btn-dark btn-block" value="Update"/>
+ </form>
+
+{% endblock %}

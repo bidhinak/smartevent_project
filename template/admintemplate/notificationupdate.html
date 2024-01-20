@@ -1,0 +1,17 @@
+{% extends 'admintemplate/Adminbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+        <div class="card">
+            <h4 style="font-display:italic;">Update notification</h4>
+
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{up|crispy}}
+                <br><input type="submit" class="btn btn-dark btn-block" value="Update"/>
+            </form>
+        </div>
+
+{% endblock %}

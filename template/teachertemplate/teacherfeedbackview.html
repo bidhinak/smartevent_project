@@ -1,0 +1,29 @@
+{% extends 'teachertemplate/teacherbase.html' %}
+{% block content %}
+
+
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">NO</th>
+        <th scope="col">DATE</th>
+        <th scope="col">FEEDBACK</th>
+        <th scope="col">REPLY</th>
+    </tr>
+</thead>
+<tbody>
+
+     {% for i in here %}
+    <tr>
+        <td> {{forloop.counter}}</td>
+        <td> {{i.date }} </td>
+        <td> {{i.feedback}} </td>
+        <td> {{i.reply}} </td>
+
+    </tr>
+       {% endfor %}
+</tbody>
+</table>
+{% endblock %}
+
+

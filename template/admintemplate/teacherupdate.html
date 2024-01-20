@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 style="font-display:italic;">Update teacher details</h4>
+        </div>
+        <div class="col-md-12">
+            <form method="POST" action="#">
+                {% csrf_token %}
+                {{show|crispy}}
+                <br><input type="submit" class="btn btn-dark btn-block" value="Update"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

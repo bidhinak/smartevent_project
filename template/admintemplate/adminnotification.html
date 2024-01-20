@@ -1,0 +1,15 @@
+{% extends 'admintemplate/Adminbase.html' %}
+{% block content%}
+{% load crispy_forms_tags %}
+<div class="card" style="height:230px;width:390px;">
+    <form method="POST">
+        {% csrf_token %}
+        {{ view|crispy}}
+       <br> <button type="submit" class="btn btn-dark btn-block">Add</button>
+    </form>
+</div>
+<br><br><br><br><br><br><br><br><br><br>
+<a href="{% url 'adminnotificationview' %}" class="btn btn-primary" >View</a>
+
+{% endblock %}
+<!--view notification in teacher and student html pages-->
