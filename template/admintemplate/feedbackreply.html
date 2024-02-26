@@ -1,29 +1,40 @@
-{% extends 'admintemplate/Adminbase.html' %}
-{% block content%}
+<!DOCTYPE html>
+{% extends "admintemplate/Adminbase.html" %}
 {% load crispy_forms_filters %}
+{% block content %}
 <div class="col-lg-8">
+    <div class="card">
+        <div class="card-header"><strong>Reply to feedbacks</strong></div>
+        <div class="card-body card-block">
+            <form method="post">{% csrf_token %}
+                <div class="form-group">
+                    <label class=" form-control-label">user</label>
+                    <input  required  class="form-control" readonly value="{{reply.user}}">
 
+                </div>
+                 <div class="form-group">
+                    <label class=" form-control-label">Complaint</label>
+                    <input  required  class="form-control" readonly value="{{reply.feedback}}">
 
-
-        <div class="card">
-            <h1 style="font-display:italic;">Reply to feedback</h1>
-
-
-
-
-                <label >username:</label>
-                  <input type="text"   name="user" readonly value="{{reply.user}}" ><br>
-                <label >feedback:</label>
-                  <input type="text"  name="feedback" readonly value="{{reply.feedback}}" ><br>
-                <label >reply:</label>
-                  <input type="text"  name="reply" value="{{reply.reply}}" >
-                <br>
-                <div>
-                     <button type="submit" class="btn btn-dark btn-block" >submit</button>
+                </div>
+                <div class="form-group">
+                    <label for="company" class=" form-control-label">Reply</label>
+                    <textarea cols="5" rows="7" required id="company" class="form-control" name="reply">
+                </textarea>
                 </div>
 
+                <div class="form-actions form-group ">
+                    <button type="submit" class="btn btn-primary btn-sm">reply</button>
+                </div>
+                {% for message in messages %}
+                <div class="alert alert-primary" role="alert">
+                    {{message}}
+                </div>
+                {% endfor %}
             </form>
         </div>
 
     </div>
+</div>
+
 {% endblock %}

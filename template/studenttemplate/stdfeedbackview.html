@@ -1,6 +1,7 @@
 {% extends 'studenttemplate/studentbase.html' %}
 {% block content %}
 
+
  </style>
 <table class="table">
     <thead class="table table-striped">
@@ -22,7 +23,11 @@
         <td> {{forloop.counter}}</td>
         <td> {{i.date }} </td>
         <td> {{i.feedback}} </td>
+        {% if i.reply == none %}
+        <td>Not replied</td>
+        {% else %}
         <td> {{i.reply}} </td>
+        {% endif %}
 
     </tr>
        {% endfor %}

@@ -1,0 +1,15 @@
+
+{% extends 'teachertemplate/teacherbase.html' %}
+{% load crispy_forms_tags %}
+{% block content%}
+
+<center><h3>Join request</h3></center>
+ <form method="POST" action="#">
+                {% csrf_token %}
+                {{view|crispy}}
+                <br
+
+                ><input type="submit" class="btn btn-dark btn-block" value="Add"/>
+<a href="{% url 'teacherjoinrequestview' %}" class="btn btn-dark" >View</a> </form>
+{% endblock %}
+

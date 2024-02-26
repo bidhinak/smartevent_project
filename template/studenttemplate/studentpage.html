@@ -1,5 +1,57 @@
 {% extends 'studenttemplate/studentbase.html' %}
 {% block content %}
-{% csrf_token %}
-<h1>student view</h1>
+
+<h4>Hi,{{request.user}}</h4>
+<h6>Welcome to Smart Event</h6><hr>
+
+
+
+<br><div class="col-lg-8">
+    <div class="card">
+        <div class="card-header"><strong>STUDENT DETAILS</strong></div>
+        <div class="card-body card-block">
+            <form method="post">{% csrf_token %}
+
+
+
+<!--                <div class="form-group">-->
+<!--                    <label class=" form-control-label">name</label>-->
+<!--                    <input  required  class="form-control" readonly value="{{show.name1}}">-->
+
+<!--                </div>-->
+                 <div class="form-group">
+                    <label class=" form-control-label"> NAME</label>
+                    <input  required  class="form-control" readonly value="{{show.student_name}}">
+
+                </div>
+                <div class="form-group">
+                    <label class=" form-control-label"> ADMISSION NUMBER</label>
+                    <input  required  class="form-control" readonly value="{{show.admission_no}}">
+
+                </div>
+                <div class="form-group">
+                    <label class=" form-control-label">EMAIL</label>
+                    <input  required  class="form-control" readonly value="{{show.email}}">
+
+                </div>
+                  <div class="form-group">
+                    <label class=" form-control-label">PHONE NUMBER</label>
+                    <input  required  class="form-control" readonly value="{{show.phone_no}}">
+
+                </div>
+                  <div class="form-group">
+                    <label class=" form-control-label">DEPARTMENT</label>
+                    <input  required  class="form-control" readonly value="{{show.department}}">
+
+                </div>
+
+
+
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
 {% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'teachertemplate/teacherbase.html' %}
+{% block content%}
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">NO</th>
+        <th scope="col">CLUB NAME</th>
+        <th scope="col">START DATE</th>
+        <th scope="col">END DATE</th>
+        <th scope="col">UPDATE</th>
+        <th scope="col">DELETE</th>
+
+
+
+
+    </tr>
+    </thead>
+   <tbody>
+
+        {% for i in show %}
+    <tr>
+         <td>{{forloop.counter}}</td>
+         <td>{{ i.name_of_club}} </td>
+        <td>{{i.start_date}}  </td>
+        <td>{{i.end_date}}  </td>
+
+
+   {% if i.name_of_club.staff_incharge.name1 == request.user %}
+
+       <td><a href="{% url 'joinrequestupdate' i.id %}" class="btn btn-outline-dark">Update</a></td>
+        <td>
+            <form action="{% url 'joinrequestdelete' i.id %}" method="POST" >
+            {% csrf_token %}<button type="submit" class="btn btn-secondary">Delete</button>
+            </form>
+         </td>
+   {% else %}
+        <td><h5 style="color:red;">Not applicable</h5></td>
+   {% endif %}
+
+    </tr>
+   {% endfor %}
+   </tbody>
+</table>
+{% endblock %}
+
+<!--view this page to student join now button instead of update-->

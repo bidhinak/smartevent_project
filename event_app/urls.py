@@ -2,7 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 
-from event_app import views
+from event_app import views, student_views
 
 urlpatterns=[
     path("", views.home,name="home"),
@@ -11,7 +11,7 @@ urlpatterns=[
     path("signupstudent",views.students_signup,name="student_signup"),
     path("Loginview",views.Login_view,name="Login_view"),
     path("teacherpage",views.teacherpage,name="teacherpage"),
-    path("studentpage", views.studentpage, name="studentpage"),
+    path("studentpage", student_views.studentpage, name="studentpage"),
     path("adminpage", views.adminpage, name="adminpage"),
     path("studentview",views.studentview,name="studentview"),
     path("teacherview",views.teacherview,name="teacherview"),
@@ -40,6 +40,19 @@ urlpatterns=[
     path("adminfeedbackview",views.adminfeedbackview,name="adminfeedbackview"),
     path("adminfeedbackreply/<int:id>/",views.adminfeedbackreply,name="adminfeedbackreply"),
     path("adminfeedbackdelete/<int:id>/",views.adminfeedbackdelete,name="adminfeedbackdelete"),
-    path("teacherfeedbackview",views.teacherfeedbackview,name="teacherfeedbackview")
+    path("teacherfeedbackview",views.teacherfeedbackview,name="teacherfeedbackview"),
+    path("studenteventview",views.studenteventview,name="stdeventview"),
+    path("teacherjoinrequest",views.teacherjoinrequest,name="tchrjoinrequest"),
+    path("teacherjoinrequestview",views.teacherjoinrequestview,name="teacherjoinrequestview"),
+    path("joinrequestupdate/<int:id>/",views.joinrequestupdate,name="joinrequestupdate"),
+    path("joinrequestdelete/<int:id>/",views.joinrequestdelete,name="joinrequestdelete"),
+    path("requesttojoin",views.requesttojoin,name="requesttojoin"),
+    # path("joinhere/<int:id>/",views.joinhere,name="joinhere"),
+    path("studentjoinrequest/<int:id>/",views.stdjoinrequest,name="studentjoinrequest"),
+    path("teacherapprove",views.teacherapprove,name="teacherapprove"),
+    path("teacheraccept/<int:id>",views.teacheraccept,name="teacheraccept"),
+    path("teacherdelete/<int:id>",views.teacherdelete,name="teacherdelete"),
+    path("logoutview",views.logoutview,name="logoutview")
 
 ]
+

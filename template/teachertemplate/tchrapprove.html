@@ -1,0 +1,86 @@
+{% extends 'teachertemplate/teacherbase.html' %}
+{% block content %}
+
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">NO</th>
+        <th scope="col">USER</th>
+        <th scope="col">NAME OF CLUB</th>
+        <th scope="col">START DATE</th>
+        <th scope="col">END DATE</th>
+
+        <th scope="col">APPROVE</th>
+        <th scope="col">REJECT</th>
+
+
+
+
+
+
+
+    </tr>
+    </thead>
+   <tbody>
+
+        {% for i in view %}
+    <tr>
+         <td>{{forloop.counter}}</td>
+         <td>{{ i.user.name2}} </td>
+        <td>{{i.approve.name_of_club}}  </td>
+        <td>{{i.approve.start_date}}  </td>
+        <td>{{i.approve.end_date}}  </td>
+<!--          <td>{{i.approve.name_of_club.staff_incharge.name1}}  </td>-->
+<!--         <td>{{request.user}}</td>-->
+
+
+   {% if i.approve.name_of_club.staff_incharge.name1 == request.user %}
+
+            {% if i.status == 0 %}
+          <td>
+            <form action="{% url 'teacheraccept' i.id %}" method="POST" >
+            {% csrf_token %}<button type="submit" class="btn btn-secondary">Accept</button>
+            </form>
+          </td>
+          <td>
+            <form action="{% url 'teacherdelete' i.id %}" method="POST" >
+            {% csrf_token %}<button type="submit" class="btn btn-secondary">Reject</button>
+            </form>
+
+          </td>
+
+
+
+           {% elif i.status == 1 %}
+           <td>
+            <h5 style="color:skyblue">Approved</h5>
+          </td>
+
+         {% elif i.status == 2 %}
+        <td>
+            <h5 style="color:red">Rejected</h5>
+        </td>
+        {% endif %}
+
+
+
+
+        {% elif i.status == 1 %}
+           <td>
+            <h5 style="color:skyblue">Approved</h5>
+          </td>
+
+         {% elif i.status == 2 %}
+        <td>
+            <h5 style="color:red">Rejected</h5>
+        </td>
+
+
+        {% endif %}
+
+    </tr>
+   {% endfor %}
+   </tbody>
+</table>
+
+{% endblock %}

@@ -4,7 +4,7 @@
 <div><center>
 <div class="card" style="height:230px;width:390px;">
     <form method="POST">
-        {% csrf_token %}
+         {% csrf_token %}
         {{ login_form|crispy}}
       {{ teacher_form|crispy }}
        <br> <button type="submit" class="btn btn-dark">Submit</button>

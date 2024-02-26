@@ -1,0 +1,41 @@
+{% extends 'studenttemplate/studentbase.html' %}
+{% block content%}
+<table class="table">
+    <thead class="table table-striped">
+    <tr>
+        <th scope="col">NO</th>
+        <th scope="col">CLUB NAME</th>
+        <th scope="col">START DATE</th>
+        <th scope="col">END DATE</th>
+        <th scope="col">JOIN</th>
+
+
+
+
+    </tr>
+    </thead>
+   <tbody>
+
+        {% for i in join %}
+    <tr>
+         <td>{{forloop.counter}}</td>
+         <td>{{ i.name_of_club}} </td>
+        <td>{{i.start_date}}  </td>
+        <td>{{i.end_date}}  </td>
+    <td><a href="{% url 'studentjoinrequest' i.id %}" class="btn btn-outline-dark">join </a></td>
+
+
+
+    </tr>
+   {% endfor %}
+
+   {% for  i in messages %}
+   <div class="alert alert-primary" role="alert">
+       {{ i.message }}
+
+   </div>
+   {% endfor %}
+   </tbody>
+</table>
+{% endblock %}
+

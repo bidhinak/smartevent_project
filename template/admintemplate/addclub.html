@@ -1,13 +1,14 @@
 {% extends 'admintemplate/Adminbase.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
-<div class="card">
-<h4><center>Add your club here</center></h4>
 
+<h4>Add your club here</h4><hr style="border:dashed">
 
+<br><div class="card">
             <form method="POST"  enctype="multipart/form-data">
-                {{addview|crispy}}
                 {% csrf_token %}
+                {{addview|crispy}}
+
                 <br><input class="btn btn-outline-dark" type="submit" value="Add">
             </form>
     </div>

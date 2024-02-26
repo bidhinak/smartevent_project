@@ -1,21 +1,20 @@
-{% extends 'admintemplate/Adminbase.html' %}
-{% block content %}
+{% extends 'teachertemplate/teacherbase.html' %}
 {% load crispy_forms_tags %}
-
-
+{% block content%}
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h4 style="font-display:italic;">Update teacher details</h4>
-        </div>
-        <div class="col-md-12">
+            <h4 style="font-display:italic;">Update  join request details</h4>
+        </div><br><br><br>
+        <div class="col">
             <form method="POST" action="#">
+
+                {{update|crispy}}
                 {% csrf_token %}
-                {{show|crispy}}
                 <br><input type="submit" class="btn btn-dark btn-block" value="Update"/>
             </form>
         </div>
     </div>
 </div>
-
 {% endblock %}
+

@@ -1,0 +1,41 @@
+{% extends 'studenttemplate/studentbase.html' %}
+{% load crispy_forms_tags %}
+{% block content%}
+{% csrf_token %}
+
+
+
+
+<br><div class="col-lg-8">
+    <div class="card">
+        <div class="card-header"><strong>Send join request</strong></div>
+        <div class="card-body card-block">
+            <form method="post">{% csrf_token %}
+                <div class="form-group">
+                    <label class=" form-control-label">Club Name</label>
+                    <input  required  class="form-control" readonly value="{{show.name_of_club}}">
+
+                </div>
+                 <div class="form-group">
+                    <label class=" form-control-label">Start Date</label>
+                    <input  required  class="form-control" readonly value="{{show.start_date}}">
+
+                </div>
+                <div class="form-group">
+                    <label class=" form-control-label">End Date</label>
+                    <input  required  class="form-control" readonly value="{{show.end_date}}">
+
+                </div><br>
+
+                <div class="form-actions form-group ">
+                    <button type="submit" class="btn btn-primary btn-sm">SEND JOINING REQUEST</button>
+                </div>
+
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

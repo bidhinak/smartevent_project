@@ -11,7 +11,7 @@
         <th scope="col">DELETE</th>
 
 
-         </tr>
+    </tr>
    </thead>
 <tbody>
 {% for i in view %}
@@ -19,7 +19,16 @@
         <td> {{forloop.counter}}</td>
         <td> {{i.date }} </td>
         <td> {{i.feedback}} </td>
-        <td><a href="{% url 'adminfeedbackreply' i.id %}" class="btn btn-outline-dark">Reply</a></td>
+        <td>
+            {% if i.reply == None %}
+
+            <a href="{% url 'adminfeedbackreply' i.id %}" class="btn btn-outline-dark">Reply</a></td>
+
+            {% else %}
+
+           {{i.reply}}
+
+            {% endif %}
         <td>
             <form action="{% url 'adminfeedbackdelete' i.id %}" method="POST" >
             {% csrf_token %}<button type="submit" class="btn btn-secondary">Delete</button>

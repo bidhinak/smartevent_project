@@ -1,4 +1,4 @@
-{% extends 'teachertemplate/teacherbase.html' %}
+{% extends 'studenttemplate/studentbase.html' %}
 {% block content%}
 <table class="table">
     <thead class="table table-striped">
@@ -11,8 +11,7 @@
         <th scope="col">END TIME</th>
         <th scope="col">CLUB</th>
         <th scope="col">STAFF INCHARGE</th>
-        <th scope="col">UPDATE</th>
-        <th scope="col">DELETE</th>
+
 
 
 
@@ -20,7 +19,7 @@
     </thead>
    <tbody>
 
-        {% for i in view %}
+        {% for i in event %}
     <tr>
          <td>{{forloop.counter}}</td>
          <td>{{ i.event_name}} </td>
@@ -32,18 +31,7 @@
                  <td>{{i.club1.staff_incharge.name1}}  </td>
 
 
-    {% if i.club1.staff_incharge.name1 == request.user %}
-          <td><a href="{% url 'tchreventupdate' i.id %}" class="btn btn-outline-dark">Update</a></td>
-        <td>
-            <form action="{% url 'tchreventdelete' i.id %}" method="POST" >
-            {% csrf_token %}<button type="submit" class="btn btn-secondary">Delete</button>
-            </form>
-         </td>
-     {% else %}
-        <td>
-            <h6 style="color:red">Not Available</h6>
-        </td>
-    {% endif %}
+
     </tr>
    {% endfor %}
    </tbody>

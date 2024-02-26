@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-from event_app.models import Login, teacher, student, club, event, notification, Feedback
+from event_app.models import Login, teacher, student, club, event, notification, Feedback, joinrequest, join
 
 
 class customform(UserCreationForm):
@@ -43,7 +43,7 @@ class Eventform(forms.ModelForm):
     class Meta:
         model=event
         fields='__all__'
-        exclude=('club_name',)
+        exclude=('club1',)
 
 class Notificationform(forms.ModelForm):
     date= forms.DateField(widget=DateInput)
@@ -60,4 +60,16 @@ class Feedbackform(forms.ModelForm):
 class Adminfeedbackform(forms.ModelForm):
       class Meta:
         model=Feedback
+        fields="__all__"
+
+class Joinrequestform(forms.ModelForm):
+    start_date = forms.DateField(widget=DateInput)
+    end_date = forms.DateField(widget=DateInput)
+    class Meta:
+        model=joinrequest
+        fields="__all__"
+
+class Join(forms.ModelForm):
+    class Meta:
+        model=join
         fields="__all__"
